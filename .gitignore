@@ -1,0 +1,20 @@
+# Unity
+[Ll]ibrary/
+[Ll]ibrary/*
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Uu]serSettings/
+[Gg]ameBuild/
+[Gg]ameBuilds/
+.vs/
+.idea/
+.vscode/
+*.suo
+*.user
+*.userprefs
+*.csproj
+*.unityproj
+*.sln
+*.tmproj

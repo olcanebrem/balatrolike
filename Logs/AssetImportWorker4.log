@@ -196,3 +196,208 @@ Received Import Request.
 Start importing Assets/Textures/Layer 76.png using Guid(5eed38ef01dbd39458815d9243befdf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '230728eabcc1d8d777000f83d0000362') in 0.055131 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 18.169531 seconds.
+  path: Assets/Textures/toy race car top down  copy.png
+  artifactKey: Guid(3767a08e0e8dad34e967eb09ac964dc1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/toy race car top down  copy.png using Guid(3767a08e0e8dad34e967eb09ac964dc1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40898a6aa1d5e16223dabcce31d2f404') in 0.008586 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 4.847888 seconds.
+  path: Assets/Textures/Layer 66 copy.png
+  artifactKey: Guid(0bc2d322cec095141aa960c384d16b12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Layer 66 copy.png using Guid(0bc2d322cec095141aa960c384d16b12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd606d548c3be077ff577d9ce565798b') in 0.010329 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.962630 seconds.
+  path: Assets/Textures/Layer 66 copy.png
+  artifactKey: Guid(0bc2d322cec095141aa960c384d16b12) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Textures/Layer 66 copy.png using Guid(0bc2d322cec095141aa960c384d16b12) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '6de59a505f465d5f1d304ee0cebb4c83') in 0.128109 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 43.637497 seconds.
+  path: Assets/Textures/bg.png
+  artifactKey: Guid(55fbcdd95d287334fa7a00d29f4a806f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/bg.png using Guid(55fbcdd95d287334fa7a00d29f4a806f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0f1306a65b181fb6db0670aaa5e4a42f') in 0.016359 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.955315 seconds.
+  path: Assets/Textures/bg.png
+  artifactKey: Guid(55fbcdd95d287334fa7a00d29f4a806f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Textures/bg.png using Guid(55fbcdd95d287334fa7a00d29f4a806f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: 'b0a770393160abfdb69d1eb11103e0ae') in 0.018778 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 57.981263 seconds.
+  path: Assets/Textures/bg.png
+  artifactKey: Guid(55fbcdd95d287334fa7a00d29f4a806f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/bg.png using Guid(55fbcdd95d287334fa7a00d29f4a806f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '02589ce1f5e88fee5200470c68a20828') in 0.024185 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.936131 seconds.
+  path: Assets/Textures/bg.png
+  artifactKey: Guid(55fbcdd95d287334fa7a00d29f4a806f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Textures/bg.png using Guid(55fbcdd95d287334fa7a00d29f4a806f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '259b35b2b5f96ad0aeb8609d7b460917') in 0.027976 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 74.661864 seconds.
+  path: Assets/Textures/bg.png
+  artifactKey: Guid(55fbcdd95d287334fa7a00d29f4a806f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Textures/bg.png using Guid(55fbcdd95d287334fa7a00d29f4a806f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '421b1678955670c1f506f4110da2167a') in 0.020945 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 1.504619 seconds.
+  path: Assets/Textures/bg.png
+  artifactKey: Guid(55fbcdd95d287334fa7a00d29f4a806f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/bg.png using Guid(55fbcdd95d287334fa7a00d29f4a806f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40276235fad41c83709808e02cfa6339') in 0.017227 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 75.780770 seconds.
+  path: Assets/Textures/bg.png.jpg
+  artifactKey: Guid(9e1d7a83a62d41e44b129f6769074fdb) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Textures/bg.png.jpg using Guid(9e1d7a83a62d41e44b129f6769074fdb) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: 'f673e75c16dd18edd2969d78d7d6f5da') in 0.034268 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 79.050036 seconds.
+  path: Assets/Textures/Layer 72.png
+  artifactKey: Guid(85d6c57844ff0f247a23dfb5d6768456) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Layer 72.png using Guid(85d6c57844ff0f247a23dfb5d6768456) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'addfe69c96864450ad6fe7242e84930a') in 0.010352 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 36.480619 seconds.
+  path: Assets/Textures/toy car.png
+  artifactKey: Guid(228384a0d9cbd844ab9b67ccf09f8df7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/toy car.png using Guid(228384a0d9cbd844ab9b67ccf09f8df7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cec17dfc3022d52afbde19ae9c5221f2') in 0.009865 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.769962 seconds.
+  path: Assets/Textures/toy race car top down  copy.png
+  artifactKey: Guid(3767a08e0e8dad34e967eb09ac964dc1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/toy race car top down  copy.png using Guid(3767a08e0e8dad34e967eb09ac964dc1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f0b47d5f703c92755950c2dacfcb5fb') in 0.009322 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 6.673789 seconds.
+  path: Assets/Textures/Layer 76.png
+  artifactKey: Guid(5eed38ef01dbd39458815d9243befdf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Layer 76.png using Guid(5eed38ef01dbd39458815d9243befdf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ccfbe82903cbf84be47dae4deb85ce4b') in 0.008687 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 3.074980 seconds.
+  path: Assets/Textures/Layer 73.png
+  artifactKey: Guid(49a4437e1bd827e449cec3f6238da3cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Layer 73.png using Guid(49a4437e1bd827e449cec3f6238da3cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '687020f37dcf50721846ca869e7d684e') in 0.009334 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 222.282872 seconds.
+  path: Assets/Scenes/SampleScene.unity
+  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Scenes/SampleScene.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: '7c94a72a71bb77bbe4c15474b5015d5d') in 0.004887 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 20.815882 seconds.
+  path: Assets/Textures/bg.png
+  artifactKey: Guid(55fbcdd95d287334fa7a00d29f4a806f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Textures/bg.png using Guid(55fbcdd95d287334fa7a00d29f4a806f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)  -> (artifact id: 'a0cf10c8035bb9910350a406f7521aca') in 0.029756 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.611 seconds
+Refreshing native plugins compatible for Editor in 2.27 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for iOS target not found
+Native extension for Android target not found
+Native extension for WebGL target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.977 seconds
+Domain Reload Profiling: 1588ms
+	BeginReloadAssembly (175ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (48ms)
+	RebuildCommonClasses (29ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (21ms)
+	LoadAllAssembliesAndSetupDomain (376ms)
+		LoadAssemblies (190ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (243ms)
+			TypeCache.Refresh (239ms)
+				TypeCache.ScanAssembly (229ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (978ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (563ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (37ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (59ms)
+			ProcessInitializeOnLoadAttributes (438ms)
+			ProcessInitializeOnLoadMethodAttributes (23ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (8ms)
+Refreshing native plugins compatible for Editor in 2.17 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3083 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 22 unused Assets / (30.6 KB). Loaded Objects now: 3596.
+Memory consumption went from 121.5 MB to 121.5 MB.
+Total: 3.551200 ms (FindLiveObjects: 0.219600 ms CreateObjectMapping: 0.128200 ms MarkObjects: 3.144900 ms  DeleteObjects: 0.057700 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 

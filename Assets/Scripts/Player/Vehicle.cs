@@ -10,14 +10,30 @@ public class Vehicle : MonoBehaviour
     public int durability;
     public bool specialAbilityActive;
     public int currentLap;
+    private float nitroAmount;
 
-    void Update()
+    private void Update()
     {
-        // Araç hareket ve davranışları burada kontrol edilir
+        MoveOnTrack();
+    }
+
+    private void MoveOnTrack()
+    {
+        // Pist üzerinde hareketi sağlamak için gerekli kod
+        // Dairesel bir rota boyunca hareket et
+        transform.position += transform.forward * speed * Time.deltaTime;
+        // Pist merkezine göre dönüş yapılabilir
+        transform.RotateAround(Vector3.zero, Vector3.up, speed * Time.deltaTime);
     }
 
     public void ActivateSpecialAbility()
     {
         // Özel yetenekler burada aktif edilir
+    }
+
+    public void UpdateNitro(float amount)
+    {
+        nitroAmount += amount;
+        // Nitro ile ilgili işlemler
     }
 }

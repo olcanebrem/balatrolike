@@ -6,7 +6,7 @@ public class GridManager : MonoBehaviour
     public int gridHeight = 9;
     public Building[,] grid;
 
-    void Start()
+    private void Start()
     {
         grid = new Building[gridWidth, gridHeight];
         // Grid'i başlat

@@ -14,7 +14,11 @@ public class UIManager : MonoBehaviour
 
     public void UpdateUI()
     {
-        // Nitro ve tur sayısı gibi UI elemanlarını güncelle
+        if (Player.instance != null)
+        {
+            nitroText.text = "Nitro: " + Player.instance.currentNitro.ToString();
+            lapText.text = "Lap: " + Player.instance.currentLap.ToString(); // Güncellenmiş
+        }
     }
 
     public void ToggleBuildMenu(bool show)

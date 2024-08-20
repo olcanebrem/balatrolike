@@ -7,9 +7,13 @@ public class LaneManager : MonoBehaviour
     public List<Vehicle> vehiclesOnLane;
     public float laneLength = 100f;
 
-    void Update()
+    private void Update()
     {
         // Şeritteki araçların durumunu kontrol et
+        foreach (var vehicle in vehiclesOnLane)
+        {
+            // Araçların hareketini ve konumunu kontrol et
+        }
     }
 
     public void AddVehicleToLane(Vehicle vehicle)

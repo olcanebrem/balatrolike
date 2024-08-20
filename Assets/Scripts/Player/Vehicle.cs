@@ -1,6 +1,5 @@
 using UnityEngine;
-
-public enum VehicleType { Heavy, Medium, Fast }
+using PathCreation;
 
 public class Vehicle : MonoBehaviour
 {
@@ -10,30 +9,35 @@ public class Vehicle : MonoBehaviour
     public int durability;
     public bool specialAbilityActive;
     public int currentLap;
-    private float nitroAmount;
 
-    private void Update()
+    private PathCreator pathCreator; // PathCreator referansı
+    private float distanceTravelled;
+
+    void Start()
     {
-        MoveOnTrack();
+        // PathCreator'ı referans al
+        pathCreator = FindObjectOfType<PathCreator>();
     }
 
-    private void MoveOnTrack()
+    void Update()
     {
-        // Pist üzerinde hareketi sağlamak için gerekli kod
-        // Dairesel bir rota boyunca hareket et
-        transform.position += transform.forward * speed * Time.deltaTime;
-        // Pist merkezine göre dönüş yapılabilir
-        transform.RotateAround(Vector3.zero, Vector3.up, speed * Time.deltaTime);
+        if (pathCreator != null)
+        {
+            // Araç path üzerinde hareket eder
+            distanceTravelled += speed * Time.deltaTime;
+            transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
+            transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled);
+        }
     }
 
     public void ActivateSpecialAbility()
     {
         // Özel yetenekler burada aktif edilir
     }
-
-    public void UpdateNitro(float amount)
-    {
-        nitroAmount += amount;
-        // Nitro ile ilgili işlemler
-    }
+}
+public enum VehicleType 
+{ 
+    Heavy, 
+    Medium, 
+    Fast 
 }

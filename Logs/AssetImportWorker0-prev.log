@@ -189,3 +189,35 @@ Received Import Request.
 Start importing Assets/Prefabs/Vehicles/Car.prefab using Guid(a2353e43132b4214f92d506fa0e14522) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a036a44aa42b43582be18f372b834cad') in 0.190018 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 8
+========================================================================
+Received Import Request.
+  Time since last request: 4073.110913 seconds.
+  path: Assets/Prefabs/Vehicles/Car.prefab
+  artifactKey: Guid(a2353e43132b4214f92d506fa0e14522) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Vehicles/Car.prefab using Guid(a2353e43132b4214f92d506fa0e14522) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6252f31c1acb455e9d31355b68173d5c') in 0.063711 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time since last request: 75.095847 seconds.
+  path: Assets/Prefabs/Vehicles/Car 1.prefab
+  artifactKey: Guid(c15b1820829d4094290fd0db33e8e332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Vehicles/Car 1.prefab using Guid(c15b1820829d4094290fd0db33e8e332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9cba4e2b2a4547f6faae85f206789b84') in 0.031196 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 11
+========================================================================
+Received Import Request.
+  Time since last request: 20.806463 seconds.
+  path: Assets/Prefabs/Vehicles/Car.prefab
+  artifactKey: Guid(c15b1820829d4094290fd0db33e8e332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Vehicles/Car.prefab using Guid(c15b1820829d4094290fd0db33e8e332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '02a856f4caf36d06e87ac944d0385ba7') in 0.071853 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 11
+========================================================================
+Received Import Request.
+  Time since last request: 40.890950 seconds.
+  path: Assets/Prefabs/Vehicles/Car.prefab
+  artifactKey: Guid(c15b1820829d4094290fd0db33e8e332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Vehicles/Car.prefab using Guid(c15b1820829d4094290fd0db33e8e332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd38f3d1d2cf2cbfb90810e5f62c71c81') in 0.018881 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10

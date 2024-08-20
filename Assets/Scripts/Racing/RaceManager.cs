@@ -1,33 +1,28 @@
 using UnityEngine;
 using System.Collections.Generic;
+using PathCreation;  // PathCreator sınıfı için gerekli namespace
 
 public class RaceManager : MonoBehaviour
 {
-    public float segmentLength = 10f; // Her bir segmentin uzunluğu
-    public int totalSegments = 30;    // Toplam segment sayısı
-    public Dictionary<int, float> nitroBySegment; // Segment başına Nitro miktarı
-    public Transform trackCenter;     // Pistin merkezini temsil eden Transform
-    public float trackRadius = 50f;   // Pistin yarıçapı
+    public PathCreator pathCreator; // Path referansı
+    public List<Vehicle> vehicles;
 
-    private void Start()
+    void Start()
     {
-        nitroBySegment = new Dictionary<int, float>();
         InitializeRace();
     }
 
-    private void InitializeRace()
+    void InitializeRace()
     {
-        // Yarışın başlatılmasıyla ilgili işlemler
+        foreach (Vehicle vehicle in vehicles)
+        {
+            vehicle.transform.position = pathCreator.path.GetPointAtDistance(0);
+            vehicle.transform.rotation = pathCreator.path.GetRotationAtDistance(0);
+        }
     }
 
-    public void UpdateRaceProgress(Vehicle vehicle)
+    public void UpdateRaceProgress()
     {
-        // Araçların pist üzerindeki ilerlemesini güncelle
-        // Mesela, araç pist üzerindeki segmentleri geçtikçe Nitro miktarını artırabiliriz
-        int currentSegment = Mathf.FloorToInt(vehicle.transform.position.magnitude / segmentLength);
-        if (nitroBySegment.ContainsKey(currentSegment))
-        {
-            vehicle.UpdateNitro(nitroBySegment[currentSegment]);
-        }
+        // Yarışın ilerleyişini güncelle
     }
 }

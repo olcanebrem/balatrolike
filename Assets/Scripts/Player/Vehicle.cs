@@ -5,13 +5,13 @@ public class Vehicle : MonoBehaviour
 {
     public int vehicleID;
     public VehicleType type;
-    public float speed;
+    public float speed = 1f;
     public int durability;
     public bool specialAbilityActive;
     public int currentLap;
 
-    private PathCreator pathCreator; // PathCreator referansı
-    private float distanceTravelled;
+    public PathCreator pathCreator;  // Yolu buradan alacağız
+    public float distanceTravelled;  // Araç ne kadar yol aldı
 
     void Start()
     {
@@ -19,15 +19,19 @@ public class Vehicle : MonoBehaviour
         pathCreator = FindObjectOfType<PathCreator>();
     }
 
-    void Update()
+      void Update()
     {
         if (pathCreator != null)
-        {
-            // Araç path üzerinde hareket eder
-            distanceTravelled += speed * Time.deltaTime;
-            transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
-            transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled);
+         {
+        // Her karede mesafeyi artır
+        distanceTravelled += speed * Time.deltaTime;
+        transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
+        transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled);
+
+        Debug.Log("Distance Travelled: " + distanceTravelled); // Debug için
         }
+        
+        
     }
 
     public void ActivateSpecialAbility()

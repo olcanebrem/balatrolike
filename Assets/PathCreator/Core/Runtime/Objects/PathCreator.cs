@@ -15,7 +15,7 @@ namespace PathCreation {
         bool initialized;
 
         GlobalDisplaySettings globalEditorDisplaySettings;
-
+        
         // Vertex path created from the current bezier path
         public VertexPath path {
             get {

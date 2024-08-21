@@ -137,10 +137,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicleID: 0
   type: 0
-  speed: 0
+  speed: 1
   durability: 0
   specialAbilityActive: 0
   currentLap: 0
+  pathCreator: {fileID: 0}
+  distanceTravelled: 0
 --- !u!114 &4900776281126671265
 MonoBehaviour:
   m_ObjectHideFlags: 0

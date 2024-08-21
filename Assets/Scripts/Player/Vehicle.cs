@@ -12,26 +12,19 @@ public class Vehicle : MonoBehaviour
 
     public PathCreator pathCreator;  // Yolu buradan alacağız
     public float distanceTravelled;  // Araç ne kadar yol aldı
+    public int laneIndex;  // Araç hangi lane'de olduğunu belirler
 
-    void Start()
-    {
-        // PathCreator'ı referans al
-        pathCreator = FindObjectOfType<PathCreator>();
-    }
-
-      void Update()
+    void Update()
     {
         if (pathCreator != null)
-         {
-        // Her karede mesafeyi artır
-        distanceTravelled += speed * Time.deltaTime;
-        transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
-        transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled);
+        {
+            // Her karede mesafeyi artır
+            distanceTravelled += speed * Time.deltaTime;
+            transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
+            transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled);
 
-        Debug.Log("Distance Travelled: " + distanceTravelled); // Debug için
+            Debug.Log("Vehicle is moving along lane: " + laneIndex);
         }
-        
-        
     }
 
     public void ActivateSpecialAbility()
@@ -39,6 +32,7 @@ public class Vehicle : MonoBehaviour
         // Özel yetenekler burada aktif edilir
     }
 }
+
 public enum VehicleType 
 { 
     Heavy, 

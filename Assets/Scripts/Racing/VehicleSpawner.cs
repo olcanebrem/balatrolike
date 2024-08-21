@@ -4,50 +4,41 @@ using PathCreation;
 public class VehicleSpawner : MonoBehaviour
 {
     public Vehicle vehiclePrefab;  // Araç prefab'ını buradan atayacağız
-    public PathCreator[] pathCreators;  // Birden fazla PathCreator desteği için dizi
-    public Transform startTransform;  // Araçların başladığı konum
+    public PathCreator[] pathCreators;  // Yolları buradan alacağız
     public float startDistance = 0f;  // Araçların başladığı uzaklık
-    private UIManager uiManager;
-    
+
+    public int laneIndex = 0; // Varsayılan lane index (0: Left, 1: Right)
+
     private void Start()
     {
-        // Eğer başlangıçta bir araç varsa, başlangıç mesafesini ayarla
-        startDistance = 0f;
-        
-        uiManager = FindObjectOfType<UIManager>();
-
         if (vehiclePrefab == null)
         {
             Debug.LogError("Vehicle Prefab is not assigned!");
         }
-
-        if (pathCreators.Length == 0)
+        if (pathCreators == null || pathCreators.Length < 2)
         {
-            Debug.LogError("Path Creators are not assigned!");
+            Debug.LogError("PathCreators are not assigned correctly!");
         }
     }
 
-    
-     public void SpawnVehicle(int laneIndex)
+        public void SpawnVehicle()
     {
-        if (laneIndex < 0 || laneIndex >= pathCreators.Length)
+        if (vehiclePrefab == null || pathCreators == null || pathCreators.Length < 2)
         {
-            Debug.LogError("Invalid lane index!");
+            Debug.LogError("Missing vehicle prefab or path creators!");
             return;
         }
-        
-        // Hangi şeritte araç spawn edileceğini UIManager'dan al
-        int selectedLane = uiManager.laneIndex;
-        PathCreator selectedPathCreator = pathCreators[selectedLane];
-        
 
-        Vehicle newVehicle = Instantiate(vehiclePrefab, startTransform.position, Quaternion.identity);
+        // Doğru PathCreator'ı seç
+        PathCreator selectedPathCreator = pathCreators[laneIndex]; // laneIndex değerine göre doğru path seçiliyor
 
-        // Doğru şeride göre PathCreator'ı ayarla
-        newVehicle.pathCreator = pathCreators[laneIndex];
-        newVehicle.distanceTravelled = startDistance;
+        // Yeni bir araç oluştur ve doğru pozisyonda başlat
+        Vehicle newVehicle = Instantiate(vehiclePrefab, selectedPathCreator.path.GetPointAtDistance(startDistance), selectedPathCreator.path.GetRotationAtDistance(startDistance));
 
-        Debug.Log("Spawned vehicle on lane " + laneIndex);
+        // Araç üzerinde gerekli ayarlamaları yap
+        newVehicle.pathCreator = selectedPathCreator;
+        newVehicle.distanceTravelled = startDistance;  // Araç başlangıç noktasında
     }
-        
+
+
 }

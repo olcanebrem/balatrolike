@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 4242078911980737027}
   - component: {fileID: 2629887113487243123}
   - component: {fileID: 228801874059850318}
-  - component: {fileID: 4900776281126671265}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -143,18 +142,4 @@ MonoBehaviour:
   currentLap: 0
   pathCreator: {fileID: 0}
   distanceTravelled: 0
---- !u!114 &4900776281126671265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2689266246342928190}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cccd6f2c8fe38041bf1567ab75aebd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  laneID: 0
-  vehiclesOnLane: []
-  laneLength: 100
+  laneIndex: 0

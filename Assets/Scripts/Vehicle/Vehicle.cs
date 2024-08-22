@@ -5,8 +5,10 @@ public class Vehicle : MonoBehaviour
 {
     public int vehicleID;
     public VehicleType type;
-    public float speed = 1f;
-    public int durability;
+    public VehicleData vehicleData;  // Scriptable Object referansı
+    private VehicleData.SpecialAbility currentAbility;
+    private float currentSpeed;
+    private int currentDurability;
     public bool specialAbilityActive;
     public int currentLap;
 
@@ -14,12 +16,19 @@ public class Vehicle : MonoBehaviour
     public float distanceTravelled;  // Araç ne kadar yol aldı
     public int laneIndex;  // Araç hangi lane'de olduğunu belirler
 
+    void Start()
+    {
+        // Scriptable Object'ten verileri al
+        currentSpeed = vehicleData.speed;
+        currentDurability = vehicleData.durability;
+        currentAbility = vehicleData.specialAbility;
+    }
     void Update()
     {
         if (pathCreator != null)
         {
             // Her karede mesafeyi artır
-            distanceTravelled += speed * Time.deltaTime;
+            distanceTravelled += currentSpeed * Time.deltaTime;
             transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
             transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled);
 

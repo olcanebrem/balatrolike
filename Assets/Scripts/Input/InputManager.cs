@@ -6,20 +6,28 @@ public class InputManager : MonoBehaviour
     public Vehicle selectedVehicle;
     public Building selectedBuilding;
 
-    void Update()
+    private void Update()
     {
         HandleInput();
     }
 
-    void HandleInput()
+    private void HandleInput()
     {
         if (isBuildingMode)
         {
             // Bina yerleştirme girdilerini işle
+            if (Input.GetMouseButtonDown(0)) // Sol tıklama
+            {
+                // Bina yerleştirme işlemleri
+            }
         }
         else
         {
             // Araç seçme ve kontrol girdilerini işle
+            if (Input.GetMouseButtonDown(0)) // Sol tıklama
+            {
+                // Araç seçme işlemleri
+            }
         }
     }
 }

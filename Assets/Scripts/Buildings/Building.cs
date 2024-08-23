@@ -11,7 +11,7 @@ public class Building : MonoBehaviour
     public bool isActive = false;
     public float effectCooldown = 0;
 
-    void Update()
+    private void Update()
     {
         if (isActive)
         {

@@ -16,12 +16,17 @@ public class Vehicle : MonoBehaviour
     public float distanceTravelled;  // Araç ne kadar yol aldı
     public int laneIndex;  // Araç hangi lane'de olduğunu belirler
 
+    public Color vehicleColor;  // Araç rengi
+    public MeshRenderer bodyRenderer; // Gövdenin MeshRenderer bileşeni
+
     void Start()
     {
         // Scriptable Object'ten verileri al
         currentSpeed = vehicleData.speed;
         currentDurability = vehicleData.durability;
         currentAbility = vehicleData.specialAbility;
+        vehicleColor = vehicleData.color;
+        bodyRenderer.material.color = vehicleData.color;
     }
     void Update()
     {

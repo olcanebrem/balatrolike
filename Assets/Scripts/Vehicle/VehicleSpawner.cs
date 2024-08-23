@@ -7,7 +7,6 @@ public class VehicleSpawner : MonoBehaviour
     public VehicleData[] vehicleDatas;  // Farklı araç veri varlıkları
     public PathCreator[] pathCreators;  // Yolları buradan alacağız
     public float startDistance = 0f;  // Araçların başladığı uzaklık
-
     public int laneIndex = 0; // Varsayılan lane index (0: Left, 1: Right)
 
     private void Start()
@@ -20,6 +19,7 @@ public class VehicleSpawner : MonoBehaviour
         {
             Debug.LogError("PathCreators are not assigned correctly!");
         }
+        
     }
 
     public void SpawnVehicle(int index)
@@ -43,6 +43,8 @@ public class VehicleSpawner : MonoBehaviour
         // Yeni bir araç oluştur ve doğru pozisyonda başlat
         Vehicle newVehicle = Instantiate(vehiclePrefab, selectedPathCreator.path.GetPointAtDistance(startDistance), selectedPathCreator.path.GetRotationAtDistance(startDistance));
         newVehicle.vehicleData = data;
+        
+        // Araç üzerinde gerekli ayarlamaları yap
         newVehicle.pathCreator = selectedPathCreator;
         newVehicle.distanceTravelled = startDistance;
     }

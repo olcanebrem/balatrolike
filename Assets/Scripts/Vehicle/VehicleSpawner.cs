@@ -47,5 +47,6 @@ public class VehicleSpawner : MonoBehaviour
         // Araç üzerinde gerekli ayarlamaları yap
         newVehicle.pathCreator = selectedPathCreator;
         newVehicle.distanceTravelled = startDistance;
+        
     }
 }

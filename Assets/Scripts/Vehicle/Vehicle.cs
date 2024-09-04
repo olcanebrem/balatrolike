@@ -41,22 +41,21 @@ public class Vehicle : MonoBehaviour
         vehicleColor = vehicleData.color;
         bodyRenderer.material.color = vehicleData.color;
 
-        pathCreator = FindObjectOfType<PathCreator>();
         targetSpeed = currentSpeed; // Başlangıçta hedef hız, mevcut hıza eşit
 
         originalSpeed = currentSpeed;
-
+        
+        VehicleTextManager textManager = GetComponent<VehicleTextManager>();
+        textManager.vehicle = this; // "this" şu anki Vehicle script'ini referans alır
         
     }
+    
     void Update()
     {
-        if (pathCreator != null)
         {
             // Hız geçişini yumuşak yapmak için Lerp kullan
             currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, speedChangeRate * Time.deltaTime);
 
-            // Mesafeyi her karede hız ile artır
-            distanceTravelled += currentSpeed * Time.deltaTime;
             // Her karede mesafeyi artır
             distanceTravelled += currentSpeed * Time.deltaTime;
             transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);

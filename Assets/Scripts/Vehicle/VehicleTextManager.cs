@@ -3,63 +3,45 @@ using TMPro;
 
 public class VehicleTextManager : MonoBehaviour
 {
-    
     public Vehicle vehicle; // Bu referans Inspector'dan atanacak
-    public TextMeshProUGUI textPrefab; // Prefab olarak atanacak
-    public Vector3 textOffset = new Vector3(0, 2, 0); // Metnin araç üzerindeki pozisyonu için bir offset
-
-    private TextMeshProUGUI speedAndDurabilityText; // TextMeshProUGUI referansı
-    public Canvas canvasPrefab; // Canvas prefab'ına referans
+    private TextMeshProUGUI speedAndDurabilityText; // Prefab içinde bulunan TextMeshPro referansı
+    private Camera mainCamera; // Kamerayı takip etmek için
 
     private void Start()
     {
-                
-                {
-            if (canvasPrefab == null)
-            {
-                Debug.LogError("Canvas prefab not assigned!");
-                return;
-            }
+        // TextMeshProUGUI bileşenini prefab içinden bul
+        speedAndDurabilityText = GetComponentInChildren<TextMeshProUGUI>();
 
-            // Yeni Canvas oluştur ve sahneye ekle
-            Canvas newCanvas = Instantiate(canvasPrefab);
-            newCanvas.transform.SetParent(null); // Parent'ı kaldırarak sahnede kalmasını sağla
-
-            // Metin bileşenini oluştur ve yeni Canvas'ın altına ekle
-            GameObject textObj = Instantiate(textPrefab.gameObject, newCanvas.transform);
-            textObj.transform.localPosition = new Vector3(0, 100, 0);
-        }
-
-        
-
-        if (textPrefab == null)
+        if (speedAndDurabilityText == null)
         {
-            Debug.LogError("Text prefab not assigned!");
+            Debug.LogError("TextMeshPro component not found in children!");
             return;
         }
 
-    
-        // Başlangıç metin değerini ayarlayın
+        // Ana kamerayı bul
+        mainCamera = Camera.main;
+
+        // Başlangıç metin değerini ayarla
         UpdateSpeedAndDurabilityText();
     }
 
     private void LateUpdate()
     {
-        // Metnin rotasyonunu koru
         if (speedAndDurabilityText != null)
         {
-            speedAndDurabilityText.transform.rotation = Quaternion.identity;
+            // Metni kameraya doğru döndür
+            Vector3 directionToCamera = speedAndDurabilityText.transform.position - mainCamera.transform.position;
+            directionToCamera.y = 0; // Y eksenindeki rotasyonu sabitle
+            speedAndDurabilityText.transform.rotation = Quaternion.LookRotation(directionToCamera);
         }
     }
+
 
     private void UpdateSpeedAndDurabilityText()
     {
-        // Canlı hız ve dayanıklılık değerlerini metne yansıt
         if (speedAndDurabilityText != null && vehicle != null)
         {
-            speedAndDurabilityText.text = $"Speed: {vehicle.CurrentSpeed.ToString("F2")}, Durability: {vehicle.CurrentDurability}";
+            speedAndDurabilityText.text = $"Speed: {vehicle.CurrentSpeed:F2}, Durability: {vehicle.CurrentDurability}";
         }
     }
 }
-
-

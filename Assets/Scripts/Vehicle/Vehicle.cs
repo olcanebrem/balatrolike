@@ -1,6 +1,7 @@
 using UnityEngine;
 using PathCreation;
 using System; // Action için gerekli
+
 public class Vehicle : MonoBehaviour
 {
     public int vehicleID;
@@ -8,10 +9,8 @@ public class Vehicle : MonoBehaviour
     public VehicleData vehicleData;  // Scriptable Object referansı
     private VehicleData.SpecialAbility currentAbility;
     private float currentSpeed;
-    public float CurrentSpeed
-    { get { return currentSpeed; } }
-    public float CurrentDurability
-    { get { return currentDurability; } }
+    public float CurrentSpeed { get { return currentSpeed; } }
+    public float CurrentDurability { get { return currentDurability; } }
     private int currentDurability;
     public bool specialAbilityActive;
     public int currentLap;
@@ -31,10 +30,12 @@ public class Vehicle : MonoBehaviour
     private bool isLerpingSpeed;     // Hız değiştirme aktif mi?
     public float originalSpeed = 1f; // Araçların orijinal hızı
 
+    // Olay tanımları
+    public event Action OnSpeedOrDurabilityChanged;
+
     void Start()
     {
         // Scriptable Object'ten verileri al
-        
         currentSpeed = vehicleData.speed;
         currentDurability = vehicleData.durability;
         currentAbility = vehicleData.specialAbility;
@@ -42,27 +43,25 @@ public class Vehicle : MonoBehaviour
         bodyRenderer.material.color = vehicleData.color;
 
         targetSpeed = currentSpeed; // Başlangıçta hedef hız, mevcut hıza eşit
-
         originalSpeed = currentSpeed;
-        
+
         VehicleTextManager textManager = GetComponent<VehicleTextManager>();
-        textManager.vehicle = this; // "this" şu anki Vehicle script'ini referans alır
-        
+        if (textManager != null)
+        {
+            textManager.vehicle = this; // "this" şu anki Vehicle script'ini referans alır
+        }
     }
-    
+
     void Update()
     {
-        {
-            // Hız geçişini yumuşak yapmak için Lerp kullan
-            currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, speedChangeRate * Time.deltaTime);
+        // Hız geçişini yumuşak yapmak için Lerp kullan
+        currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, speedChangeRate * Time.deltaTime);
 
-            // Her karede mesafeyi artır
-            distanceTravelled += currentSpeed * Time.deltaTime;
-            transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
-            transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled);
+        // PathCreator ile her karede mesafeyi artır ve araç pozisyonunu güncelle
+        distanceTravelled += currentSpeed * Time.deltaTime;
+        transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
+        transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled);
 
-            
-        }
         // Hız değerini smooth şekilde geri döndürme işlemi
         if (isLerpingSpeed)
         {
@@ -77,8 +76,6 @@ public class Vehicle : MonoBehaviour
             }
         }
     }
-    // Olay tanımları
-    public event Action OnSpeedOrDurabilityChanged;
 
     public void UpdateSpeed(float newSpeed)
     {
@@ -91,32 +88,29 @@ public class Vehicle : MonoBehaviour
         currentDurability = newDurability;
         OnSpeedOrDurabilityChanged?.Invoke(); // Olayı tetikleme
     }
+
+    // Çarpışma kontrolü
     void OnCollisionEnter(Collision collision)
     {
-        // Eğer çarpışılan obje başka bir araçsa
         Vehicle otherVehicle = collision.gameObject.GetComponent<Vehicle>();
 
         if (otherVehicle != null)
         {
             if (currentSpeed > otherVehicle.currentSpeed)
             {
-                // Hızlı olan aracın crashSpeed'ini hesapla
                 float originalCrashSpeed = otherVehicle.currentSpeed;
                 otherVehicle.crashSpeed = (currentSpeed / 4) + originalCrashSpeed;
                 otherVehicle.SetSpeedSmooth(otherVehicle.crashSpeed);
 
-                // Bu aracın hızını 1/4 oranında azalt
                 float reducedSpeed = currentSpeed / 4;
                 SetSpeedSmooth(reducedSpeed);
             }
             else if (currentSpeed < otherVehicle.currentSpeed)
             {
-                // Yavaş olan aracın crashSpeed'ini hesapla
                 float originalCrashSpeed = currentSpeed;
                 crashSpeed = (otherVehicle.currentSpeed / 4) + originalCrashSpeed;
                 SetSpeedSmooth(crashSpeed);
 
-                // Diğer aracın hızını 1/4 oranında azalt
                 float reducedSpeed = otherVehicle.currentSpeed / 4;
                 otherVehicle.SetSpeedSmooth(reducedSpeed);
             }
@@ -126,6 +120,7 @@ public class Vehicle : MonoBehaviour
             }
         }
     }
+
     // Smooth şekilde hız değiştirme işlemi
     public void SetSpeedSmooth(float targetSpeed)
     {
@@ -134,15 +129,21 @@ public class Vehicle : MonoBehaviour
         isLerpingSpeed = true;
     }
 
+    // Özel yetenekleri aktif etme
     public void ActivateSpecialAbility()
     {
-        // Özel yetenekler burada aktif edilir
+        if (specialAbilityActive != true)
+        {
+            Debug.Log($"Activating ability: {currentAbility}");
+            // Special ability logic goes here...
+            specialAbilityActive = true;
+        }
     }
 }
 
-public enum VehicleType 
-{ 
-    Heavy, 
-    Medium, 
-    Fast 
+public enum VehicleType
+{
+    Heavy,
+    Medium,
+    Fast
 }

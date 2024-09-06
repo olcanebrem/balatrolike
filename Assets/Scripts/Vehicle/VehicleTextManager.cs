@@ -3,12 +3,13 @@ using TMPro;
 
 public class VehicleTextManager : MonoBehaviour
 {
-    public Vehicle vehicle; // Bu referans Inspector'dan atanacak
+    private Vehicle vehicle; // Bu referans Inspector'dan atanacak
     private TextMeshProUGUI speedAndDurabilityText; // Prefab içinde bulunan TextMeshPro referansı
     private Camera mainCamera; // Kamerayı takip etmek için
 
     private void Start()
     {
+        vehicle = GetComponent<Vehicle>();
         // TextMeshProUGUI bileşenini prefab içinden bul
         speedAndDurabilityText = GetComponentInChildren<TextMeshProUGUI>();
 
@@ -21,8 +22,7 @@ public class VehicleTextManager : MonoBehaviour
         // Ana kamerayı bul
         mainCamera = Camera.main;
 
-        // Başlangıç metin değerini ayarla
-        UpdateSpeedAndDurabilityText();
+        
     }
 
     private void LateUpdate()
@@ -33,15 +33,19 @@ public class VehicleTextManager : MonoBehaviour
             Vector3 directionToCamera = speedAndDurabilityText.transform.position - mainCamera.transform.position;
             directionToCamera.y = 0; // Y eksenindeki rotasyonu sabitle
             speedAndDurabilityText.transform.rotation = Quaternion.LookRotation(directionToCamera);
+
+            UpdateSpeedAndDurabilityText();
         }
     }
 
 
     private void UpdateSpeedAndDurabilityText()
     {
-        if (speedAndDurabilityText != null && vehicle != null)
+        if (vehicle != null)
         {
-            speedAndDurabilityText.text = $"Speed: {vehicle.CurrentSpeed:F2}, Durability: {vehicle.CurrentDurability}";
-        }
+            speedAndDurabilityText.text = $"Spe: {vehicle.CurrentSpeed.ToString("F2")}, Dur: {vehicle.CurrentDurability}";
+        } else {
+        Debug.Log(" vehicle != null");
+        }   
     }
 }

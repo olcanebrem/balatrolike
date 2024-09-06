@@ -1,143 +1,63 @@
 using UnityEngine;
 using PathCreation;
-using System; // Action için gerekli
 
 public class Vehicle : MonoBehaviour
 {
     public int vehicleID;
     public VehicleType type;
     public VehicleData vehicleData;  // Scriptable Object referansı
-    private VehicleData.SpecialAbility currentAbility;
-    private float currentSpeed;
-    public float CurrentSpeed { get { return currentSpeed; } }
-    public float CurrentDurability { get { return currentDurability; } }
-    private int currentDurability;
-    public bool specialAbilityActive;
-    public int currentLap;
-
-    public PathCreator pathCreator;  // Yolu buradan alacağız
     public float distanceTravelled;  // Araç ne kadar yol aldı
-    public int laneIndex;  // Araç hangi lane'de olduğunu belirler
-
     public Color vehicleColor;  // Araç rengi
     public MeshRenderer bodyRenderer; // Gövdenin MeshRenderer bileşeni
-    private float targetSpeed; // Hedef hız
-    private float speedChangeRate = 2f; // Hız değişim hızı (ne kadar hızlı ivmelenir/yavaşlar)
-    public float crashSpeed;        // Çarpışma sonrası alınacak hız
-    public float speedLerpDuration = 2f; // Hız değişim süresi
 
-    private float speedLerpTime;     // Geçerli hız değiştirme zamanı
-    private bool isLerpingSpeed;     // Hız değiştirme aktif mi?
-    public float originalSpeed = 1f; // Araçların orijinal hızı
+    public float CurrentSpeed { get; private set; }  // Araç hızı
+    public float CurrentDurability { get; private set; }  // Araç dayanıklılığı
 
-    // Olay tanımları
-    public event Action OnSpeedOrDurabilityChanged;
+    public PathCreator pathCreator;  // Yolu buradan alacağız
 
-    void Start()
+    private Rigidbody rb;
+    private Vector3 targetPosition;
+    private Quaternion targetRotation;
+
+    private void Start()
     {
+        // Rigidbody bileşenini al
+        rb = GetComponent<Rigidbody>();
+
         // Scriptable Object'ten verileri al
-        currentSpeed = vehicleData.speed;
-        currentDurability = vehicleData.durability;
-        currentAbility = vehicleData.specialAbility;
-        vehicleColor = vehicleData.color;
-        bodyRenderer.material.color = vehicleData.color;
-
-        targetSpeed = currentSpeed; // Başlangıçta hedef hız, mevcut hıza eşit
-        originalSpeed = currentSpeed;
-
-        VehicleTextManager textManager = GetComponent<VehicleTextManager>();
-        if (textManager != null)
+        if (vehicleData != null)
         {
-            textManager.vehicle = this; // "this" şu anki Vehicle script'ini referans alır
+            CurrentSpeed = vehicleData.speed;
+            CurrentDurability = vehicleData.durability;
+            vehicleColor = vehicleData.color;
+            bodyRenderer.material.color = vehicleData.color;
         }
     }
 
-    void Update()
+    private void FixedUpdate()
     {
-        // Hız geçişini yumuşak yapmak için Lerp kullan
-        currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, speedChangeRate * Time.deltaTime);
+        if (pathCreator == null) return;
+        // Zamanla artacak mesafeyi hesapla
+        distanceTravelled += CurrentSpeed * Time.fixedDeltaTime;
+        // Path üzerindeki hedef pozisyonu ve rotasyonu al
+        targetPosition = pathCreator.path.GetPointAtDistance(distanceTravelled);
+        targetRotation = pathCreator.path.GetRotationAtDistance(distanceTravelled);
 
-        // PathCreator ile her karede mesafeyi artır ve araç pozisyonunu güncelle
-        distanceTravelled += currentSpeed * Time.deltaTime;
-        transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
-        transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled);
-
-        // Hız değerini smooth şekilde geri döndürme işlemi
-        if (isLerpingSpeed)
-        {
-            speedLerpTime += Time.deltaTime;
-            float t = speedLerpTime / speedLerpDuration;
-            currentSpeed = Mathf.Lerp(currentSpeed, originalSpeed, t);
-
-            if (t >= 1f)
-            {
-                isLerpingSpeed = false; // Hız değişim süreci tamamlandı
-                currentSpeed = originalSpeed; // Hız orijinal değere döndü
-            }
-        }
+        // Rigidbody kullanarak pozisyonu ve rotasyonu ayarla
+        rb.MovePosition(targetPosition);
+        rb.MoveRotation(targetRotation);
     }
 
+    // Hızı güncelleme metodu
     public void UpdateSpeed(float newSpeed)
     {
-        currentSpeed = newSpeed;
-        OnSpeedOrDurabilityChanged?.Invoke(); // Olayı tetikleme
+        CurrentSpeed = newSpeed;
     }
 
-    public void UpdateDurability(int newDurability)
+    // Dayanıklılığı güncelleme metodu
+    public void UpdateDurability(float newDurability)
     {
-        currentDurability = newDurability;
-        OnSpeedOrDurabilityChanged?.Invoke(); // Olayı tetikleme
-    }
-
-    // Çarpışma kontrolü
-    void OnCollisionEnter(Collision collision)
-    {
-        Vehicle otherVehicle = collision.gameObject.GetComponent<Vehicle>();
-
-        if (otherVehicle != null)
-        {
-            if (currentSpeed > otherVehicle.currentSpeed)
-            {
-                float originalCrashSpeed = otherVehicle.currentSpeed;
-                otherVehicle.crashSpeed = (currentSpeed / 4) + originalCrashSpeed;
-                otherVehicle.SetSpeedSmooth(otherVehicle.crashSpeed);
-
-                float reducedSpeed = currentSpeed / 4;
-                SetSpeedSmooth(reducedSpeed);
-            }
-            else if (currentSpeed < otherVehicle.currentSpeed)
-            {
-                float originalCrashSpeed = currentSpeed;
-                crashSpeed = (otherVehicle.currentSpeed / 4) + originalCrashSpeed;
-                SetSpeedSmooth(crashSpeed);
-
-                float reducedSpeed = otherVehicle.currentSpeed / 4;
-                otherVehicle.SetSpeedSmooth(reducedSpeed);
-            }
-            else
-            {
-                Debug.Log("Vehicles have the same speed; no changes made.");
-            }
-        }
-    }
-
-    // Smooth şekilde hız değiştirme işlemi
-    public void SetSpeedSmooth(float targetSpeed)
-    {
-        currentSpeed = targetSpeed;
-        speedLerpTime = 0f;
-        isLerpingSpeed = true;
-    }
-
-    // Özel yetenekleri aktif etme
-    public void ActivateSpecialAbility()
-    {
-        if (specialAbilityActive != true)
-        {
-            Debug.Log($"Activating ability: {currentAbility}");
-            // Special ability logic goes here...
-            specialAbilityActive = true;
-        }
+        CurrentDurability = newDurability;
     }
 }
 
